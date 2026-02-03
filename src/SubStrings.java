@@ -1,61 +1,31 @@
 
 public class SubStrings {
 
-    public int countValid(String s){
-        int n = s.length();
-        int[] prefix = new int[n];
+    public static void main(String[] args) {
+        String s ="Thisiss amplest rings";
+        System.out.println(countValidSubstrings(s));
+    }
+
+    public static int countValidSubstrings(String s) {
+        s=s.replaceAll("\\s+","");
+        int len = s.length();
+        int[] val = new int[len];
+
+        for(int i=0;i<len;i++){
+            val[i]= (s.charAt(i)-'a'+2)/3;
+        }
         int count =0;
 
-        for(int i=1;i<n;i++){
-            int value = (s.charAt(i)-'a'+2)/3;
-            prefix[i]=prefix[i-1]+value;
+        for(int i=0;i<len;i++){
+            int sum =0;
+            for(int j=i;j<len;j++){
+                sum+=val[j];
+                int length = j-i+1;
 
-        }
-
-        for(int start=0;start<n;start++){
-
-        }
-
-    }
-    public static void main(String[] args) {
-
-    }
-}
-
-
-
-
-
-/*
-*class Solution {
-
-    public int countValidSubstrings(String s) {
-        int n = s.length();
-        int[] prefix = new int[n + 1];
-
-        // Build prefix sum
-        for (int i = 0; i < n; i++) {
-            int value = (s.charAt(i) - 'a' + 2) / 3;
-            prefix[i + 1] = prefix[i] + value;
-        }
-
-        int count = 0;
-
-        // Check all substrings
-        for (int start = 0; start < n; start++) {
-            for (int end = start; end < n; end++) {
-                int sum = prefix[end + 1] - prefix[start];
-                int length = end - start + 1;
-
-                if (sum % length == 0) {
-                    count++;
-                }
+                if(sum%len==0) count++;
             }
         }
-
-        return count;
+        return count++;
     }
 }
 
-*
-**/
