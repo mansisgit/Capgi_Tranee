@@ -1,6 +1,6 @@
 public class Balanced {
 
-        public int canBeBalanced(String s) {
+        public static int canBeBalanced(String s) {
             int balance = 0, minBalance = 0;
 
             for (char c : s.toCharArray()) {
@@ -15,6 +15,11 @@ public class Balanced {
 
             return 0;
         }
+
+    public static void main(String[] args) {
+        String s ="(())";
+        System.out.println(canBeBalanced(s));
+    }
     }
 
 
