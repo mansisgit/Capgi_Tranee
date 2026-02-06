@@ -33,11 +33,11 @@ public class Point {
     boolean startsFrom(Point point);
 }
 
-class Line implements LineOperations{
-    private final Point start;
-    private final Point end;
+//class Line implements LineOperations{
+//    private final Point start;
+//    private final Point end;
+//
+//    public double length()
 
-    public double length()
 
-
-}
+//}
