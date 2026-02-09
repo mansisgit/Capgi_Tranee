@@ -23,7 +23,7 @@ class CompOverleading implements Comparator<Stud>{
 
 }
 
-public class Main {
+public class  Main {
     public static void main(String[] args) {
         List<Stud> list = new ArrayList<>();
         list.add(new Stud(3, "Rahul", 85f));
@@ -90,4 +90,9 @@ class AreaCalculator {
     }
 }
 
+//String array ,maths ,ll, exception,stream api,oops,file,handling
 
+//1.oops ==== MATHS
+//2.exception ==== 4.stream API
+//3.String & array === //LL
+//FILE and ques(word doc)
