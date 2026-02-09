@@ -1,10 +1,10 @@
 import java.util.*;
-class Student{
+class Stud {
      int roll_No;
      String name;
      float marks;
 
-    Student(int roll_No,String name,float marks){
+    Stud(int roll_No, String name, float marks){
         this.roll_No=roll_No;
         this.name=name;
         this.marks=marks;
@@ -16,8 +16,8 @@ class Student{
 
 }
 
-class CompOverleading implements Comparator<Student>{
-    public int compare(Student s,Student r){
+class CompOverleading implements Comparator<Stud>{
+    public int compare(Stud s, Stud r){
         return Integer.compare(s.roll_No,r.roll_No);
     }
 
@@ -25,10 +25,10 @@ class CompOverleading implements Comparator<Student>{
 
 public class Main {
     public static void main(String[] args) {
-        List<Student> list = new ArrayList<>();
-        list.add(new Student(3, "Rahul", 85f));
-        list.add(new Student(1, "Ankit", 92f));
-        list.add(new Student(2, "Mansi", 78f));
+        List<Stud> list = new ArrayList<>();
+        list.add(new Stud(3, "Rahul", 85f));
+        list.add(new Stud(1, "Ankit", 92f));
+        list.add(new Stud(2, "Mansi", 78f));
 
         //sort by roll no (Ascending)
         Collections.sort(list,new CompOverleading());
@@ -36,24 +36,58 @@ public class Main {
         System.out.println(list);
 
         //sort by name
-        list.sort(Comparator.comparing((Student s) -> s.name));
+        list.sort(Comparator.comparing((Stud s) -> s.name));
         System.out.println("Sorted by Name:");
         System.out.println(list);
 
         //sort by marks
-        list.sort(Comparator.comparingDouble((Student s) -> s.marks).reversed());
+        list.sort(Comparator.comparingDouble((Stud s) -> s.marks).reversed());
 
+        AreaCalculator a = new AreaCalculator();
+
+        System.out.println(a.area(5));       // Square
+        System.out.println(a.area(3.0));     // Circle
+        System.out.println(a.area(4, 6));    // Rectangle
+
+    }
+
+    public void countSpamMails(String[] mails) {
+        String[] spamWords = {"free", "win", "offer", "money"};
+        int spam = 0, nonSpam = 0;
+
+        for (String mail : mails) {
+            boolean isSpam = false;
+            String lower = mail.toLowerCase();
+
+            for (String word : spamWords) {
+                if (lower.contains(word)) {
+                    isSpam = true;
+                    break;
+                }
+            }
+
+            if (isSpam) spam++;
+            else nonSpam++;
+        }
+
+        System.out.println("Spam mails: " + spam);
+        System.out.println("Non-spam mails: " + nonSpam);
     }
 }
 
-/*
-* class SortByName implements Comparator<Student> {
+class AreaCalculator {
 
-    @Override
+    double area(double radius) { // Circle
+        return Math.PI * radius * radius;
+    }
 
-    public int compare(Student a, Student b) {
-        return a.name.compareTo(b.name);
+    double area(double length, double breadth) { // Rectangle
+        return length * breadth;
+    }
+
+    double area(int side) { // Square
+        return side * side;
     }
 }
 
-* */
+
