@@ -14,6 +14,6 @@ public class ProductStock {
             System.out.print(item);
         }
 
-        CurrentInventory.stream().forEach();
+
     }
 }
