@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.List;
 
 public class Trader {
@@ -24,6 +25,41 @@ public class Trader {
                  new Transaction(t3, 2011, 400),
                  new Transaction(t1, 2011, 200)
          );
+
+         System.out.println("task 1....");
+
+         transactions.stream()
+                 .filter(t -> t.getYear() == 2011)
+                 .sorted(Comparator.comparing(Transaction::getValue))
+                 .forEach(t -> System.out.println(t.getValue()));
+
+         System.out.println();
+         System.out.println("Task2....");
+
+
+         transactions.stream()
+                 .filter(t -> "Delhi".equals(t.getTrader().getCity()))
+                 .map(Transaction::getValue)
+                 .forEach(System.out::println);
+
+         System.out.println();
+         System.out.println("task3...");
+
+          Transaction maxValue = transactions.stream()
+                 .max(Comparator.comparing(t->t.getValue()))
+                 .orElse(null);
+
+         System.out.println(maxValue.getValue());
+
+         System.out.println();
+         System.out.println("task4....");
+
+         Transaction minTransaction = transactions.stream()
+                 .min(Comparator.comparing(t -> t.getValue()))
+                 .orElse(null);
+
+         System.out.println(minTransaction.getValue());
+
 
      }
 }
