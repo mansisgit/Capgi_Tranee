@@ -26,12 +26,13 @@ public class Trader {
                  new Transaction(t1, 2011, 200)
          );
 
-         System.out.println("task 1....");
 
+         System.out.println("task 1....");
          transactions.stream()
                  .filter(t -> t.getYear() == 2011)
-                 .sorted(Comparator.comparing(Transaction::getValue))
+                 .sorted(Comparator.comparing(t -> t.getValue()))
                  .forEach(t -> System.out.println(t.getValue()));
+
 
          System.out.println();
          System.out.println("Task2....");
@@ -45,7 +46,7 @@ public class Trader {
          System.out.println();
          System.out.println("task3...");
 
-          Transaction maxValue = transactions.stream()
+         Transaction maxValue = transactions.stream()
                  .max(Comparator.comparing(t->t.getValue()))
                  .orElse(null);
 
